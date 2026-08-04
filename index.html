@@ -189,16 +189,13 @@
         }
         .modal-video-container {
             position: relative;
-            padding-bottom: 56.25%;
-            height: 0;
-        }
-        .modal-video-container iframe {
-            position: absolute;
-            top: 0;
-            left: 0;
             width: 100%;
-            height: 100%;
-            border: 0;
+            background: #000;
+        }
+        .modal-video-container video {
+            width: 100%;
+            max-height: 70vh;
+            display: block;
         }
         footer {
             text-align: center;
@@ -227,44 +224,44 @@
 
     <section class="video-section">
         <div class="section-header">
-            <h2 class="section-title">✨ Verified Learning Hub</h2>
+            <h2 class="section-title">✨ Archive Learning Hub</h2>
         </div>
         
         <div class="video-grid">
             
-            <!-- Video 1 -->
-            <div class="video-card" onclick="openVideo('bgiPTUy2RqI', 'Largest creatures in the sea')">
+            <!-- Video 1 (Internet Archive Archive Sample) -->
+            <div class="video-card" onclick="openVideo('https://archive.org/download/BigBuckBunny_328/BigBuckBunny_512kb.mp4', 'Big Buck Bunny - Nature Tale')">
                 <div class="thumbnail-wrapper">
-                    <img src="https://images.unsplash.com/photo-1568430460464-02e345652e29?auto=format&fit=crop&w=600&q=80" alt="Blue Whale">
+                    <img src="https://images.unsplash.com/photo-1568430460464-02e345652e29?auto=format&fit=crop&w=600&q=80" alt="Nature">
                     <div class="play-btn-overlay">▶</div>
                 </div>
                 <div class="video-info">
-                    <div class="video-title">Largest creatures in the sea</div>
-                    <div class="video-desc">Blue whales and the unique mysteries of the deep sea.</div>
+                    <div class="video-title">Big Buck Bunny - Nature Tale</div>
+                    <div class="video-desc">A classic open-source animated wildlife adventure story.</div>
                 </div>
             </div>
 
             <!-- Video 2 -->
-            <div class="video-card" onclick="openVideo('j3mTPEuFcWk', 'Falcon&apos;s super-eyes and speed')">
+            <div class="video-card" onclick="openVideo('https://archive.org/download/sintel_tango/sintel_trailer-480p_512kb.mp4', 'Sintel - Animated Masterpiece')">
                 <div class="thumbnail-wrapper">
-                    <img src="https://images.unsplash.com/photo-1611689342806-0863700ce1e4?auto=format&fit=crop&w=600&q=80" alt="Falcon">
+                    <img src="https://images.unsplash.com/photo-1611689342806-0863700ce1e4?auto=format&fit=crop&w=600&q=80" alt="Animation">
                     <div class="play-btn-overlay">▶</div>
                 </div>
                 <div class="video-info">
-                    <div class="video-title">Falcon's super-eyes and speed</div>
-                    <div class="video-desc">The untold story of the world's fastest bird of prey.</div>
+                    <div class="video-title">Sintel - Animated Masterpiece</div>
+                    <div class="video-desc">An epic emotional fantasy story from the open-source community.</div>
                 </div>
             </div>
 
-            <!-- Video 3 (Using Verified ID to prevent any error) -->
-            <div class="video-card" onclick="openVideo('bgiPTUy2RqI', 'The Secret Kingdom of Nature')">
+            <!-- Video 3 -->
+            <div class="video-card" onclick="openVideo('https://archive.org/download/TearsOfSteel/TearsOfSteel_512kb.mp4', 'Tears of Steel - Sci-Fi')">
                 <div class="thumbnail-wrapper">
-                    <img src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?auto=format&fit=crop&w=600&q=80" alt="Nature">
+                    <img src="https://images.unsplash.com/photo-1614728894747-a83421e2b9c9?auto=format&fit=crop&w=600&q=80" alt="Sci-Fi">
                     <div class="play-btn-overlay">▶</div>
                 </div>
                 <div class="video-info">
-                    <div class="video-title">The Secret Kingdom of Nature</div>
-                    <div class="video-desc">Their disciplined and wonderful world beneath the ground.</div>
+                    <div class="video-title">Tears of Steel - Sci-Fi</div>
+                    <div class="video-desc">A futuristic science-fiction visual effects exploration project.</div>
                 </div>
             </div>
 
@@ -275,11 +272,14 @@
     <div class="modal" id="videoModal">
         <div class="modal-content">
             <div class="modal-header">
-                <div class="modal-title" id="videoModalTitle">BrainOrbit Player</div>
+                <div class="modal-title" id="videoModalTitle">BrainOrbit Archive Player</div>
                 <span class="close-btn" onclick="closeVideo()">&times;</span>
             </div>
             <div class="modal-video-container">
-                <iframe id="modalFrame" src="" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <video id="mainVideoPlayer" controls autoplay controlsList="nodownload">
+                    <source id="videoSource" src="" type="video/mp4">
+                    Your browser does not support HTML5 video.
+                </video>
             </div>
         </div>
     </div>
@@ -289,15 +289,21 @@
     </footer>
 
     <script>
-        function openVideo(videoId, title) {
-            var srcUrl = 'https://www.youtube.com/embed/' + videoId + '?autoplay=1&rel=0';
-            document.getElementById('modalFrame').setAttribute('src', srcUrl);
+        function openVideo(videoUrl, title) {
+            var player = document.getElementById('mainVideoPlayer');
+            var source = document.getElementById('videoSource');
+            
+            source.src = videoUrl;
+            player.load();
+            
             document.getElementById('videoModalTitle').innerText = title || 'BrainOrbit Player';
             document.getElementById('videoModal').style.display = 'flex';
+            player.play();
         }
 
         function closeVideo() {
-            document.getElementById('modalFrame').setAttribute('src', '');
+            var player = document.getElementById('mainVideoPlayer');
+            player.pause();
             document.getElementById('videoModal').style.display = 'none';
         }
 
