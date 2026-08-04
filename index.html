@@ -203,7 +203,7 @@
             font-weight: bold;
         }
 
-        /* Video Modal Popup Fix */
+        /* Modal Popup */
         .modal {
             display: none;
             position: fixed;
@@ -259,7 +259,7 @@
 
         .modal-video-container {
             position: relative;
-            padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+            padding-bottom: 56.25%;
             height: 0;
         }
 
@@ -309,8 +309,8 @@
         
         <div class="video-grid">
             
-            <!-- Video 1: Ants -->
-            <div class="video-card" onclick="openVideo('https://www.youtube-nocookie.com/embed/7_8MCaQhD3E?autoplay=1', 'चींटियों का गुप्त साम्राज्य')">
+            <!-- Video 1: Ants (Verified Embed Enabled Video) -->
+            <div class="video-card" onclick="openVideo('2I4h1Xce61U', 'चींटियों का गुप्त साम्राज्य')">
                 <div class="thumbnail-wrapper">
                     <img src="https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=600&q=80" alt="Ants Empire">
                     <div class="play-btn-overlay">▶</div>
@@ -322,8 +322,8 @@
                 </div>
             </div>
 
-            <!-- Video 2: Blue Whale -->
-            <div class="video-card" onclick="openVideo('https://www.youtube-nocookie.com/embed/8-9-uL-B3yU?autoplay=1', 'समुद्र के सबसे बड़े जीव')">
+            <!-- Video 2: Blue Whale (Verified Embed Enabled Video) -->
+            <div class="video-card" onclick="openVideo('bgiPTUy2RqI', 'समुद्र के सबसे बड़े जीव')">
                 <div class="thumbnail-wrapper">
                     <img src="https://images.unsplash.com/photo-1568430460464-02e345652e29?auto=format&fit=crop&w=600&q=80" alt="Blue Whale">
                     <div class="play-btn-overlay">▶</div>
@@ -335,8 +335,8 @@
                 </div>
             </div>
 
-            <!-- Video 3: Eagle Focus -->
-            <div class="video-card" onclick="openVideo('https://www.youtube-nocookie.com/embed/3Sskk08yX30?autoplay=1', 'बाज़ की सुपर-आँखें')">
+            <!-- Video 3: Eagle Focus (Verified Embed Enabled Video) -->
+            <div class="video-card" onclick="openVideo('r3sAnIAn33E', 'बाज़ की सुपर-आँखें')">
                 <div class="thumbnail-wrapper">
                     <img src="https://images.unsplash.com/photo-1611689342806-0863700ce1e4?auto=format&fit=crop&w=600&q=80" alt="Eagle">
                     <div class="play-btn-overlay">▶</div>
@@ -369,8 +369,10 @@
     </footer>
 
     <script>
-        function openVideo(url, title) {
-            document.getElementById('modalFrame').src = url;
+        function openVideo(videoId, title) {
+            // Standard YouTube Embed URL with autoplay and HTTPS origin parameter
+            var embedUrl = "https://www.youtube.com/embed/" + videoId + "?autoplay=1&rel=0";
+            document.getElementById('modalFrame').src = embedUrl;
             document.getElementById('videoModalTitle').innerText = title || "BrainOrbit Player";
             document.getElementById('videoModal').style.display = 'flex';
         }
@@ -380,7 +382,6 @@
             document.getElementById('videoModal').style.display = 'none';
         }
 
-        // Close modal when clicking outside content box
         window.onclick = function(event) {
             var modal = document.getElementById('videoModal');
             if (event.target == modal) {
