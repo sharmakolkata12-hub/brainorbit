@@ -1,18 +1,16 @@
-Markdown
 # 🚀 BrainOrbit — Only Pure Learning
 
-**BrainOrbit** बच्चों के लिए बनाया गया एक सुरक्षित और शुद्ध ज्ञान का डिजिटल प्लेटफॉर्म है। यहाँ बच्चे बिना किसी भटकाव, अनचाहे ऐड्स और समय की बर्बादी के केवल उपयोगी बातें सीखते हैं।
+BrainOrbit is a safe and pure digital learning platform designed for kids. Here, children learn useful skills and knowledge without any distractions, unwanted ads, or wasted time.
 
 ## ✨ Key Features
-- **🚫 Zero Shorts / Reels:** भटकाने वाले छोटे वीडियोज़ से पूर्ण मुक्ति।
-- **🚫 Zero AI Garbage:** केवल उच्च गुणवत्ता और तथ्य-आधारित सामग्री।
-- **🛡️ 100% Human Verified:** हर वीडियो पेरेंट्स और एक्सपर्ट्स द्वारा जांचा गया।
-- **🎯 Age-Tailored Content:** बच्चों की उम्र के हिसाब से सही ज्ञान और कैटेगरीज।
+
+* 🚫 **Zero Shorts / Reels:** Complete freedom from distracting short videos.
+* 🚫 **Zero AI Garbage:** Only high-quality and fact-based content.
+* 🛡️ **100% Human Verified:** Every video is reviewed and verified by parents and experts.
+* 🎯 **Age-Tailored Content:** Right knowledge and categories curated according to children's age.
 
 ## 🦁 Categories Highlight
-1. **Wild Kingdom:** प्रकृति और जानवरों का अद्भुत संसार।
-2. **Space Explorer:** सौरमंडल, ब्रह्मांड और खगोल विज्ञान।
-3. **Secret Agent Science:** प्रैक्टिकल एक्सपेरीमेंट्स और लॉजिक।
 
----
-*Dedicated to Bright Young Minds.*
+1. **Wild Kingdom:** The fascinating world of nature and animals.
+2. **Space Explorer:** Solar system, universe, and astronomy.
+3. **Secret Agent Science:** Practical experiments and logic.
