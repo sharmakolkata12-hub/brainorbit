@@ -17,7 +17,6 @@
             color: #ffffff;
         }
 
-        /* Header */
         header {
             display: flex;
             justify-content: space-between;
@@ -65,7 +64,6 @@
             font-weight: 600;
         }
 
-        /* Hero Banner */
         .hero {
             text-align: center;
             padding: 35px 20px 25px;
@@ -100,7 +98,6 @@
             color: #eee;
         }
 
-        /* Video Section */
         .video-section {
             padding: 25px 5% 60px;
         }
@@ -203,7 +200,7 @@
             font-weight: bold;
         }
 
-        /* Modal Popup */
+        /* Modal Player Popup */
         .modal {
             display: none;
             position: fixed;
@@ -263,13 +260,13 @@
             height: 0;
         }
 
-        .modal-video-container iframe {
+        .modal-video-container iframe,
+        .modal-video-container div#ytplayer {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            border: 0;
         }
 
         footer {
@@ -293,8 +290,8 @@
     </header>
 
     <section class="hero">
-        <h1>सुरक्षित सोच, शुद्ध ज्ञान</h1>
-        <p>बिना ऐड्स, बिना रील्स और बिना किसी भटकाव का शुद्ध ज्ञान संसार।</p>
+        <h1>Safe Minds, Pure Knowledge</h1>
+        <p>A distraction-free learning ecosystem with zero ads, zero reels, and maximum focus.</p>
         <div class="promise-badges">
             <div class="badge">🚫 Zero Shorts / Reels</div>
             <div class="badge">🚫 Zero AI Garbage</div>
@@ -309,41 +306,41 @@
         
         <div class="video-grid">
             
-            <!-- Video 1: Ants (Verified Embed Enabled Video) -->
-            <div class="video-card" onclick="openVideo('2I4h1Xce61U', 'चींटियों का गुप्त साम्राज्य')">
+            <!-- Video 1: Ants -->
+            <div class="video-card" onclick="openVideo('7_8MCaQhD3E', 'The Secret Kingdom of Ants')">
                 <div class="thumbnail-wrapper">
                     <img src="https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=600&q=80" alt="Ants Empire">
                     <div class="play-btn-overlay">▶</div>
                 </div>
                 <div class="video-info">
-                    <div class="video-title">🐜 चींटियों का गुप्त साम्राज्य</div>
-                    <div class="video-desc">जानिए चींटियाँ ज़मीन के नीचे अपना अनुशासित महल और फ़ौज कैसे बनाती हैं।</div>
+                    <div class="video-title">🐜 The Secret Kingdom of Ants</div>
+                    <div class="video-desc">Discover how ants build disciplined underground castles and organized armies.</div>
                     <span class="verified-badge">✓ Embed Safe & Verified</span>
                 </div>
             </div>
 
-            <!-- Video 2: Blue Whale (Verified Embed Enabled Video) -->
-            <div class="video-card" onclick="openVideo('bgiPTUy2RqI', 'समुद्र के सबसे बड़े जीव')">
+            <!-- Video 2: Blue Whale -->
+            <div class="video-card" onclick="openVideo('bgiPTUy2RqI', 'Giants of the Deep Ocean')">
                 <div class="thumbnail-wrapper">
                     <img src="https://images.unsplash.com/photo-1568430460464-02e345652e29?auto=format&fit=crop&w=600&q=80" alt="Blue Whale">
                     <div class="play-btn-overlay">▶</div>
                 </div>
                 <div class="video-info">
-                    <div class="video-title">🐋 समुद्र के सबसे बड़े जीव</div>
-                    <div class="video-desc">ब्लू व्हेल का दिल कार जितना बड़ा क्यों होता है? गहरे समुद्र के अनोखे रहस्य।</div>
+                    <div class="video-title">🐋 Giants of the Deep Ocean</div>
+                    <div class="video-desc">Why is a blue whale's heart as big as a car? Explore deep ocean secrets.</div>
                     <span class="verified-badge">✓ Embed Safe & Verified</span>
                 </div>
             </div>
 
-            <!-- Video 3: Eagle Focus (Verified Embed Enabled Video) -->
-            <div class="video-card" onclick="openVideo('r3sAnIAn33E', 'बाज़ की सुपर-आँखें')">
+            <!-- Video 3: Eagle Focus -->
+            <div class="video-card" onclick="openVideo('r3sAnIAn33E', 'Falcon\'s super-eyes')">
                 <div class="thumbnail-wrapper">
                     <img src="https://images.unsplash.com/photo-1611689342806-0863700ce1e4?auto=format&fit=crop&w=600&q=80" alt="Eagle">
                     <div class="play-btn-overlay">▶</div>
                 </div>
                 <div class="video-info">
-                    <div class="video-title">🦅 बाज़ की सुपर-आँखें</div>
-                    <div class="video-desc">बाज़ 3 किलोमीटर दूर से अपनी नज़र कैसे केंद्रित करता है? एकाग्रता का पाठ।</div>
+                    <div class="video-title">🦅 Falcon's super-eyes</div>
+                    <div class="video-desc">How eagles lock their focus from 3 kilometers away. A lesson in concentration.</div>
                     <span class="verified-badge">✓ Embed Safe & Verified</span>
                 </div>
             </div>
@@ -359,7 +356,7 @@
                 <span class="close-btn" onclick="closeVideo()">&times;</span>
             </div>
             <div class="modal-video-container">
-                <iframe id="modalFrame" src="" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <div id="ytplayer"></div>
             </div>
         </div>
     </div>
@@ -368,17 +365,52 @@
         <p>&copy; 2026 BrainOrbit — Dedicated to Pure Learning.</p>
     </footer>
 
+    <!-- YouTube IFrame Player API Script -->
     <script>
+        var tag = document.createElement('script');
+        tag.src = "https://www.youtube.com/iframe_api";
+        var firstScriptTag = document.getElementsByTagName('script')[0];
+        firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+        var player;
+        function onYouTubeIframeAPIReady() {
+            // Player initialization ready
+        }
+
         function openVideo(videoId, title) {
-            // Standard YouTube Embed URL with autoplay and HTTPS origin parameter
-            var embedUrl = "https://www.youtube.com/embed/" + videoId + "?autoplay=1&rel=0";
-            document.getElementById('modalFrame').src = embedUrl;
             document.getElementById('videoModalTitle').innerText = title || "BrainOrbit Player";
             document.getElementById('videoModal').style.display = 'flex';
+
+            if (player) {
+                player.loadVideoById({
+                    videoId: videoId,
+                    host: 'https://www.youtube-nocookie.com'
+                });
+            } else {
+                player = new YT.Player('ytplayer', {
+                    height: '100%',
+                    width: '100%',
+                    videoId: videoId,
+                    host: 'https://www.youtube-nocookie.com',
+                    playerVars: {
+                        'autoplay': 1,
+                        'rel': 0,
+                        'modestbranding': 1,
+                        'origin': window.location.origin
+                    },
+                    events: {
+                        'onReady': function(event) {
+                            event.target.playVideo();
+                        }
+                    }
+                });
+            }
         }
 
         function closeVideo() {
-            document.getElementById('modalFrame').src = '';
+            if (player) {
+                player.stopVideo();
+            }
             document.getElementById('videoModal').style.display = 'none';
         }
 
