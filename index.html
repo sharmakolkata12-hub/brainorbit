@@ -189,13 +189,16 @@
         }
         .modal-video-container {
             position: relative;
-            width: 100%;
-            background: #000;
+            padding-bottom: 56.25%;
+            height: 0;
         }
-        .modal-video-container video {
+        .modal-video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
             width: 100%;
-            max-height: 70vh;
-            display: block;
+            height: 100%;
+            border: 0;
         }
         footer {
             text-align: center;
@@ -224,44 +227,44 @@
 
     <section class="video-section">
         <div class="section-header">
-            <h2 class="section-title">✨ Archive Learning Hub</h2>
+            <h2 class="section-title">✨ Ultra-Fast Learning Hub</h2>
         </div>
         
         <div class="video-grid">
             
-            <!-- Video 1: Big Buck Bunny (Nature/Wildlife theme matching thumbnail) -->
-            <div class="video-card" onclick="openVideo('https://archive.org/download/BigBuckBunny_328/BigBuckBunny_512kb.mp4', 'Big Buck Bunny - Nature Tale')">
+            <!-- Video 1 -->
+            <div class="video-card" onclick="openVideo('kJQP7kiw5Fk', 'Amazing Science & Nature Wonders')">
                 <div class="thumbnail-wrapper">
-                    <img src="https://images.unsplash.com/photo-1557050543-4d5f4e07ef46?auto=format&fit=crop&w=600&q=80" alt="Big Buck Bunny">
+                    <img src="https://images.unsplash.com/photo-1568430460464-02e345652e29?auto=format&fit=crop&w=600&q=80" alt="Nature">
                     <div class="play-btn-overlay">▶</div>
                 </div>
                 <div class="video-info">
-                    <div class="video-title">Big Buck Bunny - Nature Tale</div>
-                    <div class="video-desc">A classic open-source animated wildlife adventure story.</div>
+                    <div class="video-title">Amazing Science & Nature Wonders</div>
+                    <div class="video-desc">Explore the breathtaking mysteries of our natural world.</div>
                 </div>
             </div>
 
-            <!-- Video 2: Sintel (Fantasy/Animation theme matching thumbnail) -->
-            <div class="video-card" onclick="openVideo('https://archive.org/download/sintel_tango/sintel_trailer-480p_512kb.mp4', 'Sintel - Animated Masterpiece')">
+            <!-- Video 2 -->
+            <div class="video-card" onclick="openVideo('tgbNymZ7vqY', 'The First YouTube Video - History')">
                 <div class="thumbnail-wrapper">
-                    <img src="https://images.unsplash.com/photo-1534447677768-be436bb09401?auto=format&fit=crop&w=600&q=80" alt="Sintel Fantasy">
+                    <img src="https://images.unsplash.com/photo-1611689342806-0863700ce1e4?auto=format&fit=crop&w=600&q=80" alt="History">
                     <div class="play-btn-overlay">▶</div>
                 </div>
                 <div class="video-info">
-                    <div class="video-title">Sintel - Animated Masterpiece</div>
-                    <div class="video-desc">An epic emotional fantasy story from the open-source community.</div>
+                    <div class="video-title">The First YouTube Video - History</div>
+                    <div class="video-desc">A look back at the historical roots of online video streaming.</div>
                 </div>
             </div>
 
-            <!-- Video 3: Tears of Steel (Sci-Fi theme matching thumbnail) -->
-            <div class="video-card" onclick="openVideo('https://archive.org/download/TearsOfSteel/TearsOfSteel_512kb.mp4', 'Tears of Steel - Sci-Fi')">
+            <!-- Video 3 -->
+            <div class="video-card" onclick="openVideo('j3mTPEuFcWk', 'Fascinating Wildlife Documentaries')">
                 <div class="thumbnail-wrapper">
-                    <img src="https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=600&q=80" alt="Sci-Fi Future">
+                    <img src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?auto=format&fit=crop&w=600&q=80" alt="Wildlife">
                     <div class="play-btn-overlay">▶</div>
                 </div>
                 <div class="video-info">
-                    <div class="video-title">Tears of Steel - Sci-Fi</div>
-                    <div class="video-desc">A futuristic science-fiction visual effects exploration project.</div>
+                    <div class="video-title">Fascinating Wildlife Documentaries</div>
+                    <div class="video-desc">Discover incredible animal behaviors and survival instincts.</div>
                 </div>
             </div>
 
@@ -272,14 +275,11 @@
     <div class="modal" id="videoModal">
         <div class="modal-content">
             <div class="modal-header">
-                <div class="modal-title" id="videoModalTitle">BrainOrbit Archive Player</div>
+                <div class="modal-title" id="videoModalTitle">BrainOrbit Player</div>
                 <span class="close-btn" onclick="closeVideo()">&times;</span>
             </div>
             <div class="modal-video-container">
-                <video id="mainVideoPlayer" controls autoplay controlsList="nodownload">
-                    <source id="videoSource" src="" type="video/mp4">
-                    Your browser does not support HTML5 video.
-                </video>
+                <iframe id="modalFrame" src="" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             </div>
         </div>
     </div>
@@ -289,21 +289,15 @@
     </footer>
 
     <script>
-        function openVideo(videoUrl, title) {
-            var player = document.getElementById('mainVideoPlayer');
-            var source = document.getElementById('videoSource');
-            
-            source.src = videoUrl;
-            player.load();
-            
+        function openVideo(videoId, title) {
+            var srcUrl = 'https://www.youtube.com/embed/' + videoId + '?autoplay=1&rel=0&modestbranding=1';
+            document.getElementById('modalFrame').setAttribute('src', srcUrl);
             document.getElementById('videoModalTitle').innerText = title || 'BrainOrbit Player';
             document.getElementById('videoModal').style.display = 'flex';
-            player.play();
         }
 
         function closeVideo() {
-            var player = document.getElementById('mainVideoPlayer');
-            player.pause();
+            document.getElementById('modalFrame').setAttribute('src', '');
             document.getElementById('videoModal').style.display = 'none';
         }
 
