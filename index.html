@@ -104,12 +104,33 @@
             position: relative;
             width: 100%;
             height: 180px;
+            overflow: hidden;
             background: #000;
         }
-        .thumbnail-wrapper iframe {
+        .thumbnail-wrapper img {
             width: 100%;
             height: 100%;
-            pointer-events: none; /* Allows click to trigger card modal */
+            object-fit: cover;
+        }
+        .play-btn-overlay {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(255, 0, 0, 0.9);
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+            transition: transform 0.2s;
+        }
+        .video-card:hover .play-btn-overlay {
+            transform: translate(-50%, -50%) scale(1.1);
         }
         .video-info {
             padding: 15px;
@@ -125,7 +146,7 @@
             color: #aaaaaa;
             line-height: 1.4;
         }
-        /* Modal Player Popup */
+        /* Modal Popup Player */
         .modal {
             display: none;
             position: fixed;
@@ -218,7 +239,8 @@
             <!-- Video 1 -->
             <div class="video-card" onclick="openVideo('bgiPTUy2RqI', 'समुद्र के सबसे बड़े जीव')">
                 <div class="thumbnail-wrapper">
-                    <iframe src="https://www.youtube-nocookie.com/embed/bgiPTUy2RqI?controls=0&disablekb=1&fs=0&modestbranding=1&iv_load_policy=3"></iframe>
+                    <img src="https://images.unsplash.com/photo-1568430460464-02e345652e29?auto=format&fit=crop&w=600&q=80" alt="Blue Whale">
+                    <div class="play-btn-overlay">▶</div>
                 </div>
                 <div class="video-info">
                     <div class="video-title">🐋 समुद्र के सबसे बड़े जीव</div>
@@ -229,7 +251,8 @@
             <!-- Video 2 -->
             <div class="video-card" onclick="openVideo('j3mTPEuFcWk', 'बाज़ की उड़ान और गति')">
                 <div class="thumbnail-wrapper">
-                    <iframe src="https://www.youtube-nocookie.com/embed/j3mTPEuFcWk?controls=0&disablekb=1&fs=0&modestbranding=1&iv_load_policy=3"></iframe>
+                    <img src="https://images.unsplash.com/photo-1611689342806-0863700ce1e4?auto=format&fit=crop&w=600&q=80" alt="Falcon">
+                    <div class="play-btn-overlay">▶</div>
                 </div>
                 <div class="video-info">
                     <div class="video-title">🦅 बाज़ की सुपर-आँखें और गति</div>
@@ -238,13 +261,14 @@
             </div>
 
             <!-- Video 3 -->
-            <div class="video-card" onclick="openVideo('8nVGeyJzeeM', 'चींटियों का गुप्त साम्राज्य')">
+            <div class="video-card" onclick="openVideo('kJQP7kiw5Fk', 'ब्रह्मांड और सौरमंडल के रहस्य')">
                 <div class="thumbnail-wrapper">
-                    <iframe src="https://www.youtube-nocookie.com/embed/8nVGeyJzeeM?controls=0&disablekb=1&fs=0&modestbranding=1&iv_load_policy=3"></iframe>
+                    <img src="https://images.unsplash.com/photo-1614728894747-a83421e2b9c9?auto=format&fit=crop&w=600&q=80" alt="Space">
+                    <div class="play-btn-overlay">▶</div>
                 </div>
                 <div class="video-info">
-                    <div class="video-title">🐜 चींटियों का गुप्त साम्राज्य</div>
-                    <div class="video-desc">ज़मीन के नीचे उनकी अनुशासित और अद्भुत दुनिया।</div>
+                    <div class="video-title">🌌 ब्रह्मांड और सौरमंडल के रहस्य</div>
+                    <div class="video-desc">तारे, ग्रह और हमारी आकाशगंगा का अद्भुत सफर।</div>
                 </div>
             </div>
 
@@ -270,7 +294,7 @@
 
     <script>
         function openVideo(videoId, title) {
-            var srcUrl = 'https://www.youtube-nocookie.com/embed/' + videoId + '?autoplay=1&rel=0';
+            var srcUrl = 'https://www.youtube.com/embed/' + videoId + '?autoplay=1&rel=0';
             document.getElementById('modalFrame').setAttribute('src', srcUrl);
             document.getElementById('videoModalTitle').innerText = title || 'BrainOrbit Player';
             document.getElementById('videoModal').style.display = 'flex';
