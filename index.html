@@ -48,19 +48,12 @@
             font-weight: 900;
             letter-spacing: 1px;
             box-shadow: 0 2px 8px rgba(255, 0, 0, 0.4);
-            transition: transform 0.2s, background-color 0.2s;
-        }
-
-        .logo-container:hover .bo-badge {
-            transform: scale(1.08);
-            background-color: #cc0000;
         }
 
         .logo-text {
             font-size: 24px;
             font-weight: 800;
             color: #ffffff;
-            letter-spacing: -0.5px;
         }
 
         .logo-text span {
@@ -77,7 +70,7 @@
             font-weight: 600;
         }
 
-        /* Hero Banner */
+        /* Hero */
         .hero {
             text-align: center;
             padding: 35px 20px 20px;
@@ -96,7 +89,7 @@
             margin: 0 auto 20px;
         }
 
-        /* Category Navigation */
+        /* Categories */
         .category-bar {
             display: flex;
             justify-content: center;
@@ -112,34 +105,24 @@
             padding: 8px 18px;
             border-radius: 20px;
             font-size: 14px;
-            font-weight: 500;
             cursor: pointer;
-            transition: all 0.2s ease;
         }
 
-        .cat-btn:hover, .cat-btn.active {
+        .cat-btn.active {
             background: #ff0000;
             color: #ffffff;
             border-color: #ff0000;
         }
 
-        /* Video Section */
+        /* Video Grid */
         .video-section {
             padding: 10px 5% 60px;
         }
 
         .section-header {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            margin-bottom: 25px;
             border-left: 4px solid #ff0000;
             padding-left: 12px;
-        }
-
-        .section-title {
-            font-size: 22px;
-            color: #ffffff;
+            margin-bottom: 25px;
         }
 
         .video-grid {
@@ -153,22 +136,14 @@
             border-radius: 12px;
             overflow: hidden;
             border: 1px solid #272727;
-            transition: transform 0.2s, border-color 0.2s;
         }
 
-        .video-card:hover {
-            transform: translateY(-5px);
-            border-color: #ff0000;
-        }
-
-        /* Thumbnail Box */
         .thumb-box {
             position: relative;
             width: 100%;
             padding-bottom: 56.25%;
             background: #000;
             cursor: pointer;
-            overflow: hidden;
         }
 
         .thumb-box img {
@@ -179,12 +154,6 @@
             height: 100%;
             object-fit: cover;
             opacity: 0.85;
-            transition: opacity 0.2s, transform 0.2s;
-        }
-
-        .thumb-box:hover img {
-            opacity: 1;
-            transform: scale(1.03);
         }
 
         .play-btn-overlay {
@@ -201,7 +170,6 @@
             align-items: center;
             justify-content: center;
             font-size: 18px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
         }
 
         .video-info {
@@ -212,14 +180,11 @@
             font-size: 15px;
             font-weight: 600;
             margin-bottom: 6px;
-            color: #ffffff;
-            line-height: 1.3;
         }
 
         .video-desc {
             font-size: 13px;
             color: #aaaaaa;
-            line-height: 1.4;
             margin-bottom: 12px;
         }
 
@@ -247,14 +212,9 @@
             padding: 6px 14px;
             border-radius: 6px;
             cursor: pointer;
-            transition: background 0.2s;
         }
 
-        .watch-btn:hover {
-            background: #cc0000;
-        }
-
-        /* Modal Player Window */
+        /* Modal Player Window & Shield Masks */
         .modal-overlay {
             display: none;
             position: fixed;
@@ -280,13 +240,20 @@
 
         .close-btn {
             position: absolute;
-            top: 10px;
+            top: 8px;
             right: 15px;
             color: #fff;
-            font-size: 24px;
+            font-size: 28px;
             font-weight: bold;
             cursor: pointer;
-            z-index: 1001;
+            z-index: 1005;
+            background: rgba(0,0,0,0.6);
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .player-container {
@@ -304,6 +271,30 @@
             border: 0;
         }
 
+        /* Blockers (Invisble Shields to prevent YouTube Navigation) */
+        
+        /* 1. Blocks Top-Left YouTube Title Link */
+        .shield-top-left {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 75%;
+            height: 60px;
+            z-index: 1001;
+            background: transparent;
+        }
+
+        /* 2. Blocks Bottom-Right YouTube Logo and More Videos Button */
+        .shield-bottom-right {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 180px;
+            height: 50px;
+            z-index: 1001;
+            background: transparent;
+        }
+
         footer {
             text-align: center;
             padding: 25px;
@@ -317,67 +308,33 @@
 <body>
 
     <header>
-        <a href="#" class="logo-container" onclick="scrollToTop(event)">
+        <div class="logo-container">
             <div class="bo-badge">BO</div>
             <div class="logo-text">Brain<span>Orbit</span></div>
-        </a>
+        </div>
         <div class="tagline-badge">Only Pure Learning</div>
     </header>
 
-    <section class="hero" id="home">
+    <section class="hero">
         <h1>Safe Minds, Pure Knowledge</h1>
         <p>A distraction-free learning ecosystem with zero ads, zero reels, and maximum focus.</p>
     </section>
 
-    <!-- Filter Categories -->
     <div class="category-bar">
-        <button class="cat-btn active" onclick="filterCategory('all', this)">✨ All Categories</button>
-        <button class="cat-btn" onclick="filterCategory('wildlife', this)">🦁 Wildlife & Nature</button>
-        <button class="cat-btn" onclick="filterCategory('space', this)">🌌 Space & Science</button>
-        <button class="cat-btn" onclick="filterCategory('math', this)">📐 Math & Logic</button>
+        <button class="cat-btn active">✨ All Categories</button>
+        <button class="cat-btn">🦁 Wildlife & Nature</button>
+        <button class="cat-btn">🌌 Space & Science</button>
+        <button class="cat-btn">📐 Math & Logic</button>
     </div>
 
     <section class="video-section">
         <div class="section-header">
-            <h2 class="section-title" id="sectionTitle">✨ All Curated Videos</h2>
+            <h2>✨ Curated Pure Educational Videos</h2>
         </div>
         
-        <div class="video-grid" id="videoGrid">
+        <div class="video-grid">
             
-            <!-- Video 1 -->
-            <div class="video-card" data-category="wildlife">
-                <div class="thumb-box" onclick="openModal('2YBh8BPn64c')">
-                    <img src="https://img.youtube.com/vi/2YBh8BPn64c/hqdefault.jpg" alt="Wildlife">
-                    <div class="play-btn-overlay">▶</div>
-                </div>
-                <div class="video-info">
-                    <div class="video-title">🦁 Wildlife Wonders & Nature</div>
-                    <div class="video-desc">Explore nature and animals in their original habitat.</div>
-                    <div class="action-row">
-                        <span class="verified-badge">✓ Safe & Verified</span>
-                        <button class="watch-btn" onclick="openModal('2YBh8BPn64c')">Watch Now ▶</button>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Video 2 -->
-            <div class="video-card" data-category="space">
-                <div class="thumb-box" onclick="openModal('libKVRa074Q')">
-                    <img src="https://img.youtube.com/vi/libKVRa074Q/hqdefault.jpg" alt="Space">
-                    <div class="play-btn-overlay">▶</div>
-                </div>
-                <div class="video-info">
-                    <div class="video-title">🌌 Solar System & Planets</div>
-                    <div class="video-desc">A fascinating journey across space and planets.</div>
-                    <div class="action-row">
-                        <span class="verified-badge">✓ Safe & Verified</span>
-                        <button class="watch-btn" onclick="openModal('libKVRa074Q')">Watch Now ▶</button>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Video 3 -->
-            <div class="video-card" data-category="math">
+            <div class="video-card">
                 <div class="thumb-box" onclick="openModal('fRed0Xmc2Wg')">
                     <img src="https://img.youtube.com/vi/fRed0Xmc2Wg/hqdefault.jpg" alt="Math">
                     <div class="play-btn-overlay">▶</div>
@@ -392,14 +349,49 @@
                 </div>
             </div>
 
+            <div class="video-card">
+                <div class="thumb-box" onclick="openModal('libKVRa074Q')">
+                    <img src="https://img.youtube.com/vi/libKVRa074Q/hqdefault.jpg" alt="Space">
+                    <div class="play-btn-overlay">▶</div>
+                </div>
+                <div class="video-info">
+                    <div class="video-title">🌌 Solar System & Planets</div>
+                    <div class="video-desc">A fascinating journey across space and planets.</div>
+                    <div class="action-row">
+                        <span class="verified-badge">✓ Safe & Verified</span>
+                        <button class="watch-btn" onclick="openModal('libKVRa074Q')">Watch Now ▶</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="video-card">
+                <div class="thumb-box" onclick="openModal('2YBh8BPn64c')">
+                    <img src="https://img.youtube.com/vi/2YBh8BPn64c/hqdefault.jpg" alt="Wildlife">
+                    <div class="play-btn-overlay">▶</div>
+                </div>
+                <div class="video-info">
+                    <div class="video-title">🦁 Wildlife Wonders & Nature</div>
+                    <div class="video-desc">Explore nature and animals in their original habitat.</div>
+                    <div class="action-row">
+                        <span class="verified-badge">✓ Safe & Verified</span>
+                        <button class="watch-btn" onclick="openModal('2YBh8BPn64c')">Watch Now ▶</button>
+                    </div>
+                </div>
+            </div>
+
         </div>
     </section>
 
-    <!-- Modal Video Player Popup -->
+    <!-- Modal Video Player Popup with Security Shields -->
     <div class="modal-overlay" id="videoModal">
         <div class="modal-content">
             <span class="close-btn" onclick="closeModal()">&times;</span>
-            <div class="player-container" id="modalPlayerBox"></div>
+            <div class="player-container">
+                <!-- Security Shields to Block Clicks to YouTube -->
+                <div class="shield-top-left"></div>
+                <div class="shield-bottom-right"></div>
+                <div id="modalPlayerBox"></div>
+            </div>
         </div>
     </div>
 
@@ -408,15 +400,12 @@
     </footer>
 
     <script>
-        function scrollToTop(event) {
-            event.preventDefault();
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
-
         function openModal(videoId) {
             const modal = document.getElementById('videoModal');
             const playerBox = document.getElementById('modalPlayerBox');
-            playerBox.innerHTML = `<iframe src="https://www.youtube-nocookie.com/embed/${videoId}?autoplay=1" allow="autoplay; encrypted-media" allowfullscreen></iframe>`;
+            
+            // Safe embed parameters: modesty + no related videos on end
+            playerBox.innerHTML = `<iframe src="https://www.youtube-nocookie.com/embed/${videoId}?autoplay=1&rel=0&modestbranding=1" allow="autoplay; encrypted-media" allowfullscreen></iframe>`;
             modal.style.display = 'flex';
         }
 
@@ -425,29 +414,6 @@
             const playerBox = document.getElementById('modalPlayerBox');
             playerBox.innerHTML = '';
             modal.style.display = 'none';
-        }
-
-        function filterCategory(category, btnElement) {
-            const buttons = document.querySelectorAll('.cat-btn');
-            buttons.forEach(btn => btn.classList.remove('active'));
-            btnElement.classList.add('active');
-
-            const titleMap = {
-                'all': '✨ All Curated Videos',
-                'wildlife': '🦁 Wildlife & Nature',
-                'space': '🌌 Space & Science',
-                'math': '📐 Math & Logic'
-            };
-            document.getElementById('sectionTitle').innerText = titleMap[category];
-
-            const cards = document.querySelectorAll('.video-card');
-            cards.forEach(card => {
-                if (category === 'all' || card.getAttribute('data-category') === category) {
-                    card.style.display = 'block';
-                } else {
-                    card.style.display = 'none';
-                }
-            });
         }
     </script>
 </body>
