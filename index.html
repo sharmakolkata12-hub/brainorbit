@@ -60,14 +60,44 @@
             color: #ff0000;
         }
 
-        .tagline-badge {
-            background: rgba(255, 196, 0, 0.15);
-            color: #ffc400;
+        /* User Details Badge */
+        .user-details-badge {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: #181818;
+            color: #ffffff;
             border: 1px solid #ffc400;
-            padding: 6px 14px;
+            padding: 6px 16px;
             border-radius: 20px;
-            font-size: 13px;
+            font-size: 14px;
             font-weight: 600;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+        }
+
+        .user-avatar-icon {
+            width: 24px;
+            height: 24px;
+            background-color: #ffc400;
+            color: #000;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        .user-name-text {
+            color: #ffffff;
+            font-size: 14px;
+        }
+
+        .user-status-dot {
+            width: 8px;
+            height: 8px;
+            background-color: #00ff66;
+            border-radius: 50%;
         }
 
         /* Hero */
@@ -212,7 +242,13 @@
             <div class="bo-badge">BO</div>
             <div class="logo-text">Brain<span>Orbit</span></div>
         </div>
-        <div class="tagline-badge">Pure Educational Player</div>
+        
+        <!-- User Details Section -->
+        <div class="user-details-badge">
+            <div class="user-avatar-icon">R</div>
+            <span class="user-name-text">Raju Sharma</span>
+            <div class="user-status-dot" title="Active"></div>
+        </div>
     </header>
 
     <section class="hero">
