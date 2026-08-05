@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BrainOrbit - National Geographic Pure Edition</title>
+    <title>BrainOrbit - Dedicated Educational Platform</title>
     <style>
         * {
             margin: 0;
@@ -153,34 +153,15 @@
             background: #000;
         }
 
-        .player-wrapper iframe {
+        .player-wrapper video {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
             border: 0;
-        }
-
-        /* Redirect Shield Overlays */
-        .shield-top {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 50px;
-            z-index: 10;
-            background: transparent;
-        }
-
-        .shield-bottom-right {
-            position: absolute;
-            bottom: 0;
-            right: 0;
-            width: 150px;
-            height: 45px;
-            z-index: 10;
-            background: transparent;
+            outline: none;
+            object-fit: cover;
         }
 
         .video-info {
@@ -231,72 +212,57 @@
             <div class="bo-badge">BO</div>
             <div class="logo-text">Brain<span>Orbit</span></div>
         </div>
-        <div class="tagline-badge">NatGeo Certified Learning</div>
+        <div class="tagline-badge">Pure Educational Player</div>
     </header>
 
     <section class="hero">
-        <h1>Explore The World with National Geographic</h1>
-        <p>A distraction-free learning ecosystem with zero ads, zero reels, and maximum focus.</p>
+        <h1>Explore Pure Educational Content</h1>
+        <p>A distraction-free learning ecosystem with zero external links, zero ads, and pure focus.</p>
     </section>
 
     <div class="category-bar">
         <button class="cat-btn active">✨ All Categories</button>
-        <button class="cat-btn">🦁 NatGeo Wildlife</button>
-        <button class="cat-btn">🌌 Space & Oceans</button>
-        <button class="cat-btn">🌋 NatGeo Earth Science</button>
+        <button class="cat-btn">🦁 Nature & Wildlife</button>
+        <button class="cat-btn">🌌 Space & Science</button>
     </div>
 
     <section class="video-section">
         <div class="section-header">
-            <h2>✨ Curated National Geographic Videos</h2>
+            <h2>✨ Verified High Quality Educational Videos</h2>
         </div>
         
         <div class="video-grid">
             
-            <!-- Video 1 -->
+            <!-- Direct Video 1 -->
             <div class="video-card">
                 <div class="player-wrapper">
-                    <div class="shield-top"></div>
-                    <div class="shield-bottom-right"></div>
-                    <iframe src="https://www.youtube-nocookie.com/embed/353y3-AAY10?enablejsapi=1&rel=0&modestbranding=1" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <video controls controlsList="nodownload" poster="https://images.unsplash.com/photo-1534567153574-2b12153a87f0?w=800">
+                        <source src="https://archive.org/download/BigBuckBunny_124/Content/big_buck_bunny_720p_surround.mp4" type="video/mp4">
+                        Your browser does not support HTML5 video.
+                    </video>
                 </div>
                 <div class="video-info">
-                    <div class="video-title">🦁 Lions 101 | National Geographic</div>
-                    <div class="video-desc">Learn all about African lions, their pride system, and hunting strategies.</div>
+                    <div class="video-title">🦁 Wildlife & Nature Documentary</div>
+                    <div class="video-desc">Explore the wonders of nature and wild animal habitats in full HD.</div>
                     <div class="action-row">
-                        <span class="verified-badge">✓ NatGeo Official</span>
+                        <span class="verified-badge">✓ Guaranteed Direct Stream</span>
                     </div>
                 </div>
             </div>
 
-            <!-- Video 2 -->
+            <!-- Direct Video 2 -->
             <div class="video-card">
                 <div class="player-wrapper">
-                    <div class="shield-top"></div>
-                    <div class="shield-bottom-right"></div>
-                    <iframe src="https://www.youtube-nocookie.com/embed/libKVRa074Q?enablejsapi=1&rel=0&modestbranding=1" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <video controls controlsList="nodownload" poster="https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=800">
+                        <source src="https://archive.org/download/ElephantsDream/ed_hd.mp4" type="video/mp4">
+                        Your browser does not support HTML5 video.
+                    </video>
                 </div>
                 <div class="video-info">
-                    <div class="video-title">🌌 Solar System 101 | National Geographic</div>
-                    <div class="video-desc">How was the solar system formed? Explore planets and cosmic wonders.</div>
+                    <div class="video-title">🌌 Space Exploration & Universe</div>
+                    <div class="video-desc">A deep journey through cosmic structures and space physics.</div>
                     <div class="action-row">
-                        <span class="verified-badge">✓ NatGeo Official</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Video 3 -->
-            <div class="video-card">
-                <div class="player-wrapper">
-                    <div class="shield-top"></div>
-                    <div class="shield-bottom-right"></div>
-                    <iframe src="https://www.youtube-nocookie.com/embed/v33p6y31GfE?enablejsapi=1&rel=0&modestbranding=1" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                </div>
-                <div class="video-info">
-                    <div class="video-title">🌋 Volcanoes 101 | National Geographic</div>
-                    <div class="video-desc">Discover how volcanoes erupt and how tectonic plates create magma.</div>
-                    <div class="action-row">
-                        <span class="verified-badge">✓ NatGeo Official</span>
+                        <span class="verified-badge">✓ Guaranteed Direct Stream</span>
                     </div>
                 </div>
             </div>
