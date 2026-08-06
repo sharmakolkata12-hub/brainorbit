@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BrainOrbit - Dedicated Educational Platform</title>
+    <title>BrainOrbit - Only Pure Learning</title>
     <style>
         * {
             margin: 0;
@@ -22,7 +22,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 12px 5%;
+            padding: 15px 5%;
             background: #0f0f0f;
             border-bottom: 1px solid #272727;
             position: sticky;
@@ -33,78 +33,43 @@
         .logo-container {
             display: flex;
             align-items: center;
-            gap: 10px;
-            text-decoration: none;
-            cursor: pointer;
-            user-select: none;
+            gap: 8px;
         }
 
-        .bo-badge {
-            background-color: #ff0000;
+        .play-icon {
+            background: #ff0000;
             color: #ffffff;
+            font-size: 14px;
             padding: 4px 10px;
             border-radius: 8px;
-            font-size: 16px;
-            font-weight: 900;
-            letter-spacing: 1px;
-            box-shadow: 0 2px 8px rgba(255, 0, 0, 0.4);
-        }
-
-        .logo-text {
-            font-size: 24px;
-            font-weight: 800;
-            color: #ffffff;
-        }
-
-        .logo-text span {
-            color: #ff0000;
-        }
-
-        /* User Details Badge */
-        .user-details-badge {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            background: #181818;
-            color: #ffffff;
-            border: 1px solid #ffc400;
-            padding: 6px 16px;
-            border-radius: 20px;
-            font-size: 14px;
-            font-weight: 600;
-            box-shadow: 0 2px 6px rgba(0,0,0,0.3);
-        }
-
-        .user-avatar-icon {
-            width: 24px;
-            height: 24px;
-            background-color: #ffc400;
-            color: #000;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 12px;
             font-weight: bold;
         }
 
-        .user-name-text {
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
             color: #ffffff;
-            font-size: 14px;
         }
 
-        .user-status-dot {
-            width: 8px;
-            height: 8px;
-            background-color: #00ff66;
-            border-radius: 50%;
+        .logo span {
+            color: #ff0000;
         }
 
-        /* Hero */
+        .tagline-badge {
+            background: rgba(255, 0, 0, 0.15);
+            color: #ff4e4e;
+            border: 1px solid #ff0000;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 600;
+        }
+
+        /* Hero Banner */
         .hero {
             text-align: center;
-            padding: 35px 20px 20px;
-            background: radial-gradient(circle at top, #281e0a 0%, #0f0f0f 70%);
+            padding: 35px 20px 25px;
+            background: radial-gradient(circle at top, #280a0a 0%, #0f0f0f 70%);
         }
 
         .hero h1 {
@@ -119,42 +84,39 @@
             margin: 0 auto 20px;
         }
 
-        /* Categories */
-        .category-bar {
+        .promise-badges {
             display: flex;
             justify-content: center;
             gap: 10px;
             flex-wrap: wrap;
-            padding: 10px 5% 25px;
         }
 
-        .cat-btn {
-            background: #181818;
-            color: #ccc;
+        .badge {
+            background: #272727;
             border: 1px solid #3f3f3f;
-            padding: 8px 18px;
-            border-radius: 20px;
-            font-size: 14px;
-            cursor: pointer;
-            transition: all 0.2s;
+            padding: 6px 14px;
+            border-radius: 18px;
+            font-size: 12px;
+            color: #eee;
         }
 
-        .cat-btn.active, .cat-btn:hover {
-            background: #ffc400;
-            color: #000000;
-            font-weight: bold;
-            border-color: #ffc400;
-        }
-
-        /* Video Grid */
+        /* Video Section */
         .video-section {
-            padding: 10px 5% 60px;
+            padding: 25px 5% 60px;
         }
 
         .section-header {
-            border-left: 4px solid #ffc400;
-            padding-left: 12px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
             margin-bottom: 25px;
+            border-left: 4px solid #ff0000;
+            padding-left: 12px;
+        }
+
+        .section-title {
+            font-size: 22px;
+            color: #ffffff;
         }
 
         .video-grid {
@@ -168,30 +130,29 @@
             border-radius: 12px;
             overflow: hidden;
             border: 1px solid #272727;
-            transition: transform 0.2s;
+            transition: transform 0.2s, border-color 0.2s;
         }
 
         .video-card:hover {
-            transform: translateY(-4px);
-            border-color: #ffc400;
+            transform: translateY(-5px);
+            border-color: #ff0000;
         }
 
-        .player-wrapper {
+        .video-player-box {
             position: relative;
             width: 100%;
-            padding-bottom: 56.25%;
+            padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+            height: 0;
             background: #000;
         }
 
-        .player-wrapper video {
+        .video-player-box iframe {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
             border: 0;
-            outline: none;
-            object-fit: cover;
         }
 
         .video-info {
@@ -199,26 +160,23 @@
         }
 
         .video-title {
-            font-size: 15px;
+            font-size: 16px;
             font-weight: 600;
             margin-bottom: 6px;
+            color: #ffffff;
         }
 
         .video-desc {
             font-size: 13px;
             color: #aaaaaa;
-            margin-bottom: 12px;
-        }
-
-        .action-row {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+            line-height: 1.4;
         }
 
         .verified-badge {
-            background: rgba(255, 196, 0, 0.15);
-            color: #ffc400;
+            display: inline-block;
+            margin-top: 10px;
+            background: rgba(76, 217, 100, 0.15);
+            color: #4cd964;
             font-size: 11px;
             padding: 4px 8px;
             border-radius: 4px;
@@ -239,67 +197,62 @@
 
     <header>
         <div class="logo-container">
-            <div class="bo-badge">BO</div>
-            <div class="logo-text">Brain<span>Orbit</span></div>
+            <div class="play-icon">▶ Orbit</div>
+            <div class="logo">Brain<span>Orbit</span></div>
         </div>
-        
-        <!-- User Details Section -->
-        <div class="user-details-badge">
-            <div class="user-avatar-icon">R</div>
-            <span class="user-name-text">Raju Sharma</span>
-            <div class="user-status-dot" title="Active"></div>
-        </div>
+        <div class="tagline-badge">Only Pure Learning</div>
     </header>
 
     <section class="hero">
-        <h1>Explore Pure Educational Content</h1>
-        <p>A distraction-free learning ecosystem with zero external links, zero ads, and pure focus.</p>
+        <h1>Safe Minds, Pure Knowledge</h1>
+        <p>A distraction-free learning ecosystem with zero ads, zero reels, and maximum focus.</p>
+        <div class="promise-badges">
+            <div class="badge">🚫 Zero Shorts / Reels</div>
+            <div class="badge">🚫 Zero AI Garbage</div>
+            <div class="badge">🛡️ 100% Human Verified</div>
+        </div>
     </section>
-
-    <div class="category-bar">
-        <button class="cat-btn active">✨ All Categories</button>
-        <button class="cat-btn">🦁 Nature & Wildlife</button>
-        <button class="cat-btn">🌌 Space & Science</button>
-    </div>
 
     <section class="video-section">
         <div class="section-header">
-            <h2>✨ Verified High Quality Educational Videos</h2>
+            <h2 class="section-title">🦁 Wild Kingdom Specials</h2>
         </div>
         
         <div class="video-grid">
             
-            <!-- Direct Video 1 -->
+            <!-- Video 1: Animals Nature -->
             <div class="video-card">
-                <div class="player-wrapper">
-                    <video controls controlsList="nodownload" poster="https://images.unsplash.com/photo-1534567153574-2b12153a87f0?w=800">
-                        <source src="https://archive.org/download/BigBuckBunny_124/Content/big_buck_bunny_720p_surround.mp4" type="video/mp4">
-                        Your browser does not support HTML5 video.
-                    </video>
+                <div class="video-player-box">
+                    <iframe src="https://www.youtube.com/embed/2YBh8BPn64c" allowfullscreen></iframe>
                 </div>
                 <div class="video-info">
-                    <div class="video-title">🦁 Wildlife & Nature Documentary</div>
-                    <div class="video-desc">Explore the wonders of nature and wild animal habitats in full HD.</div>
-                    <div class="action-row">
-                        <span class="verified-badge">✓ Guaranteed Direct Stream</span>
-                    </div>
+                    <div class="video-title">🦁 The Wonders of Wildlife</div>
+                    <div class="video-desc">Explore the amazing kingdom of wild animals in their natural habitats.</div>
+                    <span class="verified-badge">✓ Verified Educational Content</span>
                 </div>
             </div>
 
-            <!-- Direct Video 2 -->
+            <!-- Video 2: Solar System -->
             <div class="video-card">
-                <div class="player-wrapper">
-                    <video controls controlsList="nodownload" poster="https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=800">
-                        <source src="https://archive.org/download/ElephantsDream/ed_hd.mp4" type="video/mp4">
-                        Your browser does not support HTML5 video.
-                    </video>
+                <div class="video-player-box">
+                    <iframe src="https://www.youtube.com/embed/libKVRa074Q" allowfullscreen></iframe>
                 </div>
                 <div class="video-info">
-                    <div class="video-title">🌌 Space Exploration & Universe</div>
-                    <div class="video-desc">A deep journey through cosmic structures and space physics.</div>
-                    <div class="action-row">
-                        <span class="verified-badge">✓ Guaranteed Direct Stream</span>
-                    </div>
+                    <div class="video-title">🌌 Solar System & Planets</div>
+                    <div class="video-desc">A fascinating journey across space, planets, and galaxies for curious minds.</div>
+                    <span class="verified-badge">✓ Verified Educational Content</span>
+                </div>
+            </div>
+
+            <!-- Video 3: Ocean Life -->
+            <div class="video-card">
+                <div class="video-player-box">
+                    <iframe src="https://www.youtube.com/embed/0BdeO35k9y8" allowfullscreen></iframe>
+                </div>
+                <div class="video-info">
+                    <div class="video-title">🐋 Deep Sea Mysteries</div>
+                    <div class="video-desc">Uncover the secrets of deep oceans and giant underwater creatures.</div>
+                    <span class="verified-badge">✓ Verified Educational Content</span>
                 </div>
             </div>
 
