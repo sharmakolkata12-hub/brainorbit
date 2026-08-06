@@ -3,73 +3,55 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BrainOrbit - Only Pure Learning</title>
+    <title>BrainOrbit - Dedicated to Pure Learning</title>
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Roboto', 'Segoe UI', Arial, sans-serif;
+            font-family: 'Segoe UI', Arial, sans-serif;
         }
 
         body {
-            background-color: #0f0f0f;
+            background-color: #0d0d0d;
             color: #ffffff;
         }
 
-        /* Header */
         header {
             display: flex;
             justify-content: space-between;
             align-items: center;
             padding: 15px 5%;
-            background: #0f0f0f;
-            border-bottom: 1px solid #272727;
+            background: #141414;
+            border-bottom: 1px solid #2a2a2a;
             position: sticky;
             top: 0;
             z-index: 100;
         }
 
-        .logo-container {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .play-icon {
-            background: #ff0000;
-            color: #ffffff;
-            font-size: 14px;
-            padding: 4px 10px;
-            border-radius: 8px;
-            font-weight: bold;
-        }
-
         .logo {
             font-size: 24px;
-            font-weight: 700;
+            font-weight: bold;
             color: #ffffff;
         }
 
         .logo span {
-            color: #ff0000;
+            color: #ff3333;
         }
 
-        .tagline-badge {
-            background: rgba(255, 0, 0, 0.15);
-            color: #ff4e4e;
-            border: 1px solid #ff0000;
-            padding: 6px 14px;
+        .badge {
+            background: rgba(255, 51, 51, 0.2);
+            color: #ff4d4d;
+            padding: 6px 12px;
             border-radius: 20px;
             font-size: 13px;
-            font-weight: 600;
+            border: 1px solid #ff3333;
         }
 
-        /* Hero Banner */
         .hero {
             text-align: center;
-            padding: 35px 20px 25px;
-            background: radial-gradient(circle at top, #280a0a 0%, #0f0f0f 70%);
+            padding: 40px 20px 30px;
+            background: linear-gradient(180deg, #1f0808 0%, #0d0d0d 100%);
         }
 
         .hero h1 {
@@ -78,181 +60,111 @@
         }
 
         .hero p {
-            font-size: 15px;
             color: #aaa;
-            max-width: 600px;
-            margin: 0 auto 20px;
+            font-size: 15px;
         }
 
-        .promise-badges {
-            display: flex;
-            justify-content: center;
-            gap: 10px;
-            flex-wrap: wrap;
-        }
-
-        .badge {
-            background: #272727;
-            border: 1px solid #3f3f3f;
-            padding: 6px 14px;
-            border-radius: 18px;
-            font-size: 12px;
-            color: #eee;
-        }
-
-        /* Video Section */
-        .video-section {
-            padding: 25px 5% 60px;
-        }
-
-        .section-header {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            margin-bottom: 25px;
-            border-left: 4px solid #ff0000;
-            padding-left: 12px;
-        }
-
-        .section-title {
-            font-size: 22px;
-            color: #ffffff;
+        .video-container {
+            padding: 30px 5%;
         }
 
         .video-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
             gap: 25px;
         }
 
-        .video-card {
+        .card {
             background: #181818;
-            border-radius: 12px;
+            border-radius: 10px;
             overflow: hidden;
-            border: 1px solid #272727;
-            transition: transform 0.2s, border-color 0.2s;
+            border: 1px solid #282828;
         }
 
-        .video-card:hover {
-            transform: translateY(-5px);
-            border-color: #ff0000;
-        }
-
-        .video-player-box {
+        .player {
             position: relative;
-            width: 100%;
-            padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+            padding-bottom: 56.25%; /* 16:9 ratio */
             height: 0;
             background: #000;
         }
 
-        .video-player-box iframe {
+        .player iframe {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            border: 0;
+            border: none;
         }
 
-        .video-info {
+        .info {
             padding: 15px;
         }
 
-        .video-title {
+        .info h3 {
             font-size: 16px;
-            font-weight: 600;
-            margin-bottom: 6px;
-            color: #ffffff;
+            margin-bottom: 8px;
         }
 
-        .video-desc {
+        .info p {
             font-size: 13px;
-            color: #aaaaaa;
-            line-height: 1.4;
-        }
-
-        .verified-badge {
-            display: inline-block;
-            margin-top: 10px;
-            background: rgba(76, 217, 100, 0.15);
-            color: #4cd964;
-            font-size: 11px;
-            padding: 4px 8px;
-            border-radius: 4px;
-            font-weight: bold;
+            color: #999;
         }
 
         footer {
             text-align: center;
-            padding: 25px;
-            background: #050505;
-            color: #666;
-            font-size: 13px;
-            border-top: 1px solid #272727;
+            padding: 20px;
+            color: #555;
+            font-size: 12px;
+            border-top: 1px solid #222;
         }
     </style>
 </head>
 <body>
 
     <header>
-        <div class="logo-container">
-            <div class="play-icon">▶ Orbit</div>
-            <div class="logo">Brain<span>Orbit</span></div>
-        </div>
-        <div class="tagline-badge">Only Pure Learning</div>
+        <div class="logo">Brain<span>Orbit</span></div>
+        <div class="badge">Pure Education • Zero Ads</div>
     </header>
 
     <section class="hero">
         <h1>Safe Minds, Pure Knowledge</h1>
-        <p>A distraction-free learning ecosystem with zero ads, zero reels, and maximum focus.</p>
-        <div class="promise-badges">
-            <div class="badge">🚫 Zero Shorts / Reels</div>
-            <div class="badge">🚫 Zero AI Garbage</div>
-            <div class="badge">🛡️ 100% Human Verified</div>
-        </div>
+        <p>Filtered educational videos only. No shorts, no distractions.</p>
     </section>
 
-    <section class="video-section">
-        <div class="section-header">
-            <h2 class="section-title">🦁 Wild Kingdom Specials</h2>
-        </div>
-        
+    <section class="video-container">
         <div class="video-grid">
             
-            <!-- Video 1: Animals Nature -->
-            <div class="video-card">
-                <div class="video-player-box">
-                    <iframe src="https://www.youtube.com/embed/2YBh8BPn64c" allowfullscreen></iframe>
+            <!-- Video 1 -->
+            <div class="card">
+                <div class="player">
+                    <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 </div>
-                <div class="video-info">
-                    <div class="video-title">🦁 The Wonders of Wildlife</div>
-                    <div class="video-desc">Explore the amazing kingdom of wild animals in their natural habitats.</div>
-                    <span class="verified-badge">✓ Verified Educational Content</span>
-                </div>
-            </div>
-
-            <!-- Video 2: Solar System -->
-            <div class="video-card">
-                <div class="video-player-box">
-                    <iframe src="https://www.youtube.com/embed/libKVRa074Q" allowfullscreen></iframe>
-                </div>
-                <div class="video-info">
-                    <div class="video-title">🌌 Solar System & Planets</div>
-                    <div class="video-desc">A fascinating journey across space, planets, and galaxies for curious minds.</div>
-                    <span class="verified-badge">✓ Verified Educational Content</span>
+                <div class="info">
+                    <h3>Educational Video 1</h3>
+                    <p>Verified safe learning content for young minds.</p>
                 </div>
             </div>
 
-            <!-- Video 3: Ocean Life -->
-            <div class="video-card">
-                <div class="video-player-box">
-                    <iframe src="https://www.youtube.com/embed/0BdeO35k9y8" allowfullscreen></iframe>
+            <!-- Video 2 -->
+            <div class="card">
+                <div class="player">
+                    <iframe src="https://www.youtube.com/embed/L_LUpnjgPso" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 </div>
-                <div class="video-info">
-                    <div class="video-title">🐋 Deep Sea Mysteries</div>
-                    <div class="video-desc">Uncover the secrets of deep oceans and giant underwater creatures.</div>
-                    <span class="verified-badge">✓ Verified Educational Content</span>
+                <div class="info">
+                    <h3>Educational Video 2</h3>
+                    <p>Learn fascinating facts about science and nature.</p>
+                </div>
+            </div>
+
+            <!-- Video 3 -->
+            <div class="card">
+                <div class="player">
+                    <iframe src="https://www.youtube.com/embed/jNQXAC9IVRw" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+                <div class="info">
+                    <h3>Educational Video 3</h3>
+                    <p>Explore history and space in a safe environment.</p>
                 </div>
             </div>
 
@@ -260,7 +172,7 @@
     </section>
 
     <footer>
-        <p>&copy; 2026 BrainOrbit — Dedicated to Pure Learning.</p>
+        &copy; 2026 BrainOrbit - Safe Learning Platform
     </footer>
 
 </body>
